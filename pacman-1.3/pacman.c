@@ -313,7 +313,7 @@ void GetInput() {
     if(poll(&pwt, 1, 200)) scanf("%d",&ch);      //Figure out which key is pressed
 
     //If they are not pressing something, use previous input
-    if(ch == ERR|ch == 0) ch = chtmp;
+    if((ch == ERR)|(ch == 0)) ch = chtmp;
     chtmp = ch;
 
     //Determine which button is pushed

@@ -10,7 +10,7 @@ all:
 	$(CC) main.c usb.c pacman-1.3/pacman.c -o $(EXEC) -DDATAROOTDIR=\"$(datarootdir)\" $(CFLAGS)
 
 install:    all
-	mkdir -p $(DESTDIR)$(datarootdir)/pacman/Levels
+	mkdir -p $(DESTDIR)$(datarootdir)/pacman
 	cp -r pacman-1.3/Levels/ $(DESTDIR)$(datarootdir)/pacman/Levels
 
 uninstall:

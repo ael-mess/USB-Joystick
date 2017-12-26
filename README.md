@@ -6,6 +6,9 @@ The purpose of this project is to create a USB device with a game controller con
 
 - `ncurses` library to launch the game.
 - `libusb-1.0` library to access the usb device.
+- `dfu-programmer` utility to program ATMega16u2.
+- `avr-libc` and `avrdude` library and compiler to program ATMega328p.
+- have root right.
 
 ## MAIN PROGRAM :
 
@@ -13,18 +16,17 @@ The purpose of this project is to create a USB device with a game controller con
 
 To install the program type :
 ~~~ 
-$  make install
+$  sudo make install
 ~~~
 - To compile type only `make`.
-- And to uninstall type `make clean`.
+- And to uninstall type `sudo make clean`.
 
 ### RUNING
 
 To run the program type :
 ~~~
-$  ./pacman [level_#] 
+$  sudo ./pacman
 ~~~
-where level_# is 1-9.
 
 Then direct the pacman with the buttons, exit by pressing the analog pad, and pause by pressing the analog pad and the bottom button.
 the LED 13 stays on during the game.
@@ -43,13 +45,17 @@ To reprogramme the microcontroller it's necessary to flash the `atmega328p` with
 ~~~
 $  cd atmega328p
 $  make all
-$  make upload
 $  dfu-programmer atmega16u2 erase
-$  dfu-programmer atmega16u2 flash Arduino-usbserial-uno.hex
+$  dfu-programmer atmega16u2 flash Arduino-usbserial-uno/Arduino-usbserial-uno.hex
 $  dfu-programmer atmega16u2 reset
-$  make clean
 ~~~
 - Disconnect and reconnect your Arduino, your program must be active on ATMega16u2.
+~~~
+$  sudo make upload
+$  make clean
+~~~
+
+If the device is not recognized modify the `Makefile`, particularly the port `/dev/ttyACM0`.
 
 ### ATMega16u2
 
@@ -60,7 +66,7 @@ To reprogramme the microcontroller :
 - The Arduino must no longer be listed as a serial port in an lsusb, you can then execute the following commands:
 ~~~
 $  cd lufa/PolytechLille/atmega16u2
-$  make
+$  make all
 $  dfu-programmer atmega16u2 erase
 $  dfu-programmer atmega16u2 flash PAD.hex
 $  dfu-programmer atmega16u2 reset
