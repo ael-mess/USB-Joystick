@@ -2,7 +2,7 @@
 
 The purpose of this project is to create a USB device with a game controller connected to an Arduino Uno using libusb-1.0 library. To test the program the pacman4console game was used from: `https://github.com/YoctoForBeaglebone/pacman4console.git`, and was adapted to the device.
 
-## PEREQUIREMENTS :
+## PREREQUIREMENTS :
 
 - `ncurses` library to launch the game.
 - `libusb-1.0` library to access the usb device.

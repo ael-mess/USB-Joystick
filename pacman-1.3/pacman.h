@@ -44,8 +44,8 @@
 
 
     #ifndef DATAROOTDIR
-    #    define DATAROOTDIR "/usr/local/share"
+    #define DATAROOTDIR ""
     #endif
-    #define LEVELS_FILE DATAROOTDIR "/pacman/Levels/level__.dat"
+    #define LEVELS_FILE DATAROOTDIR "pacman-1.3/Levels/level__.dat"
 
 #endif
